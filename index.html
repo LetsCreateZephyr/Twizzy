@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Twizzy Translator</title>
+  <style>
+    /* Import Product Sans font from Google Fonts */
+    @import url('https://fonts.googleapis.com/css2?family=Product+Sans&display=swap');
+
+    /* Apply Product Sans as the default font */
+    body {
+      font-family: 'Product Sans', Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      background-color: white;
+      color: black;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      font-size: 22px; /* Increase the default font size for the entire page */
+      min-height: 100vh; /* Ensure the body fills the entire viewport */
+      position: relative; /* Set relative positioning */
+    }
+
+    header {
+      background-color: transparent;
+      color: black;
+      text-align: center;
+      padding: 60px 0; /* Increase padding for larger header */
+      width: 100%;
+      font-size: 64px; /* Increase font size for the header */
+    }
+
+    header span:nth-child(1) {
+      color: red;
+    }
+
+    header span:nth-child(2) {
+      color: blue;
+    }
+
+    header span:nth-child(3) {
+      color: green;
+    }
+
+    main {
+      display: flex;
+      justify-content: space-around;
+      width: 95%; /* Adjusting the width of the main content */
+      padding: 40px; /* Increase padding for larger main content */
+    }
+
+    .input-section,
+    .output-section {
+      width: 45%;
+    }
+
+    label {
+      font-size: 36px; /* Match font size to Translated Text heading */
+      margin-bottom: 20px; /* Match bottom margin to Translated Text heading */
+      display: block; /* Ensures label takes full width */
+    }
+
+    textarea {
+      margin-bottom: 20px; /* Increase bottom margin for the textarea */
+      width: 100%;
+      padding: 20px; /* Increase padding for larger textarea */
+      border-radius: 8px;
+      color: black;
+      font-family: 'Product Sans', Arial, sans-serif; /* Applying Product Sans font */
+      border: none; /* Remove the border */
+      outline: none; /* Remove the outline */
+      resize: none; /* Prevent resizing */
+      font-size: 24px; /* Increase font size for textarea */
+    }
+
+    h2 {
+      font-size: 36px; /* Keep the font size for headings */
+      margin-bottom: 20px; /* Keep the bottom margin for headings */
+      color: black;
+    }
+
+    p {
+      margin-top: 0;
+      color: black;
+      font-size: 24px; /* Increase font size for translated text */
+    }
+
+    footer {
+      margin-top: auto; /* Push the footer to the bottom */
+      font-size: 16px;
+      color: gray;
+      position: absolute; /* Set absolute positioning */
+      bottom: 10px; /* Adjust the distance from the bottom */
+    }
+  </style>
+</head>
+<body>
+  <header><span style="color:red;">T</span><span style="color:blue;">w</span><span style="color:green;">i</span><span style="color:red;">z</span><span style="color:blue;">z</span><span style="color:green;">y</span> <span style="color:red;">T</span><span style="color:blue;">r</span><span style="color:green;">a</span><span style="color:red;">n</span><span style="color:blue;">s</span><span style="color:green;">l</span><span style="color:red;">a</span><span style="color:blue;">t</span><span style="color:green;">o</span><span style="color:red;">r</span></header>
+  <main>
+    <div class="input-section">
+      <label for="inputText">Yeat-ese:</label>
+      <textarea id="inputText" placeholder="Type Yeat-ese here..." rows="4"></textarea>
+    </div>
+    <div class="output-section">
+      <h2>English:</h2>
+      <p id="translatedText"></p>
+    </div>
+  </main>
+  <footer>Made by Zephyr (this translator has many other rap slang in it 👍)</footer>
+  <script>
+    let translations = {
+      "honeybun": "$100,000",
+      "geek": "Very High",
+      "tonka": "SUV",
+      "luh": "Little",
+      "twizzy": "Twin",
+      "glock": "gun",
+      "24/7": "open all the time",
+      "bigbody": "Big",
+      "cap": "incorrect",
+      "snake": "snitch",
+      "baller": "money maker",
+      "miney": "small",
+      "rat": "snitch",
+      "skeeyee": "big booty",
+      "lean": "cough syrup and sprite",
+      "perk": "drug ",
+      // Add more Yeat-ese words and their translations as needed
+    };
+
+    function translate() {
+      const inputText = document.getElementById('inputText').value.toLowerCase().trim();
+      let translatedText = '';
+
+      if (inputText.length > 0) {
+        const words = inputText.split(' ');
+        translatedText = words.map(word => {
+          if (translations[word]) {
+            return translations[word];
+          } else {
+            return "Word Not Found 🛑";
+          }
+        }).join(' ');
+      }
+      function openLink() {
+        window.location.href = 'https://www.youtube.com'; // Replace with your desired website URL
+      }
+      document.getElementById('translatedText').innerText = translatedText;
+    }
+
+    document.getElementById('inputText').addEventListener('input', translate);
+
+    translate();
+  </script>
+</body>
+</html>
